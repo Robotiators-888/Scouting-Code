@@ -3,51 +3,32 @@ import pandas as pd
 df = pd.read_csv("Prematch Data.csv", index_col="Team")
 
 matchn = int(input("Input Match #: "))
-matches = {
-    1:[],
-    2:[],
-    3:[],
-    4:[],
-    5:[],
-    6:[],
-    7:[],
-    8:[],
-    9:[],
-    10:[],
-    11:[],
-    12:[],
-    13:[],
-    14:[],
-    15:[],
-    16:[],
-    17:[],
-    18:[],
-    19:[],
-    20:[],
-    21:[],
-    22:[],
-    23:[],
-    24:[],
-}
+#matches = {}
 teams = [input("Enter Team 1's (In order of 3 red, 3 blue) #: "), input("Enter Team 2's #: "), input("Enter Team 3's #: "),
          input("Enter Team 4's #: "), input("Enter Team 5's #: "), input("Enter Team 6's #: ")]
 
 print("*Match Number:* " + str(matchn))
+#teams = matches[matchn]
+
 for num, tn in enumerate(teams):
     if num <= 3:
-        print(":red_circle:" + tn + ":red_circle:")
+        print(":red_circle:*" + tn + "*:red_circle:")
     else:
-        print(":large_blue_circle:" + tn + ":large_blue_circle:")
+        print(":large_blue_circle:*" + tn + "*:large_blue_circle:")
 
     x = df.loc[int(tn)]
     print("Center of Gravity: " + str(x["Center of Gravity"]))
     # Auto
     print("Auto: ", end="")
     als = ["Low", "Mid", "High"]
+    c = 3
     try:
         for i in als:
             if int(x[f"Normal # of Pieces {i} Auto"]) != 0:
                 print(str(x[f"Normal # of Pieces {i} Auto"]) + f" {i} ", end="")
+                c -= 1
+        if c == 3:
+            print("No pieces in Auto.", end="")
     except ValueError:
         print("NaN error w/ auto pieces ", end="")
 
@@ -122,5 +103,3 @@ for num, tn in enumerate(teams):
     #          > ^ <
 
     print("\n")
-    
-
