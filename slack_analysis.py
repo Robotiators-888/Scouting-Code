@@ -2,11 +2,37 @@ import pandas as pd
 
 df = pd.read_csv("Prematch Data.csv", index_col="Team")
 
-matchn = input("Input Match #: ")
+matchn = int(input("Input Match #: "))
+matches = {
+    1:[],
+    2:[],
+    3:[],
+    4:[],
+    5:[],
+    6:[],
+    7:[],
+    8:[],
+    9:[],
+    10:[],
+    11:[],
+    12:[],
+    13:[],
+    14:[],
+    15:[],
+    16:[],
+    17:[],
+    18:[],
+    19:[],
+    20:[],
+    21:[],
+    22:[],
+    23:[],
+    24:[],
+}
 teams = [input("Enter Team 1's (In order of 3 red, 3 blue) #: "), input("Enter Team 2's #: "), input("Enter Team 3's #: "),
          input("Enter Team 4's #: "), input("Enter Team 5's #: "), input("Enter Team 6's #: ")]
 
-print("*Match Number:* " + matchn)
+print("*Match Number:* " + str(matchn))
 for num, tn in enumerate(teams):
     if num <= 3:
         print(":red_circle:" + tn + ":red_circle:")
